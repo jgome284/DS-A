@@ -68,3 +68,128 @@ const nthLastNode = (linkedList, n) => {
 ```
 
 The exact variable names aren’t important, and the internal implementation could be written in a number of ways, but the important part is that we are able to complete this problem efficiently–in O(n) time (we must iterate through the entire list once), and O(1) space complexity (we always use only three variables no matter what size the list is: two pointers and a counter).
+
+# Find Middle (Pointers at Different Speeds)
+
+Another two-pointer technique involves sending pointers through the list at different iteration “speeds”.
+
+Consider this problem:
+
+Find the middle node of a linked list.
+
+## Approaches
+
+As before, it’s possible to find a solution by iterating through the entire list, creating an array representation, and then returning the middle index. But as before, this potentially takes up lots of extra space:
+
+```
+create array
+while the linked list has not been fully iterated through
+  push the current element onto array
+  move forward one node
+return array[length / 2]
+```
+
+Instead, we can use two pointers to move through the list. The first pointer takes two steps through the list for every one step that the second takes, so it iterates twice as fast.
+
+```
+fastPointer = list head
+slowPointer = list head
+while fastPointer is not null
+  move fastPointer forward
+  if the end of the list has not been reached
+    move fastPointer forward again
+    move slowPointer forward
+return slowPointer
+```
+
+When the first pointer reaches the end of the list, the “slower” second pointer will be pointing to the middle element. Let’s visualize the steps of the algorithm:
+
+Starting State
+
+```
+F
+S
+1  2  3  4  5  6  7
+```
+
+First Tick
+
+```
+      F
+   S
+1  2  3  4  5  6  7
+```
+
+Second Tick
+
+```
+            F
+      S
+1  2  3  4  5  6  7
+```
+
+Third Tick
+
+```
+                  F
+         S
+1  2  3  4  5  6  7
+```
+
+Final Tick
+
+```
+                     F
+         S
+1  2  3  4  5  6  7  null
+```
+
+As long as we always move the fast pointer first and check to see that it is not null before moving it and the slow pointer again, we’ll exit iteration at the proper time and have a reference to the middle node with the slow pointer.
+
+## Solutions
+
+### 2x Speed
+
+```Javascript
+const findMiddle = linkedList => {
+  let fast = linkedList.head;
+  let slow = linkedList.head;
+
+  // As long as the end of the list is not reached
+  while (fast !== null) {
+    // Move the fast pointer at least one step
+    fast = fast.getNextNode();
+    // If it isn't at the end of the list
+    if (fast !== null) {
+      // Move both pointers forward once
+      fast = fast.getNextNode();
+      slow = slow.getNextNode();
+    }
+  }
+  // At this point, the slow pointer is in the middle
+  return slow;
+};
+```
+
+As with the nth-to-last solution, this solution has O(n) time complexity, and O(1) space complexity, since only two nodes are created no matter the size of the input list.
+
+### Half-Speed
+
+Another equally valid solution is to move the fast pointer once with each loop iteration but only move the slow pointer every-other iteration.
+
+```Javascript
+const findMiddleAlternate = linkedList => {
+  let count = 0;
+  let fast = linkedList.head;
+  let slow = linkedList.head;
+
+  while(fast !== null) {
+    fast = fast.getNextNode();
+    if (count % 2 !== 0) {
+      slow = slow.getNextNode();
+    }
+    count++;
+  }
+  return slow;
+}
+```
