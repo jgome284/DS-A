@@ -26,23 +26,4 @@ class Node {
     }
 }
 
-// we can use the node class to create links between steps in a process, for example
-const firstStep = new Node("Add item to shopping cart");
-const secondStep = new Node("Add delivery instructions");
-const thirdStep = new Node("Add payment method");
-
-// link nodes as steps in process
-firstStep.setNextNode(secondStep);
-secondStep.setNextNode(thirdStep);
-
-
-// print data for linked nodes
-let currentNode = firstStep;
-while (currentNode) {
-    // Log the current node's data
-    console.log(currentNode.data);
-    // Move to the next node
-    currentNode = currentNode.getNextNode();
-}
-
 module.exports = Node;
