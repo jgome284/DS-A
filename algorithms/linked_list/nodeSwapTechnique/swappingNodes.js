@@ -1,4 +1,4 @@
-const LinkedList = require('../../data_structures/LinkedList')
+const LinkedList = require('../../../data_structures/LinkedList')
 
 const testList = new LinkedList();
 for (let i = 0; i <= 10; i++) {
