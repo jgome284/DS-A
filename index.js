@@ -1,5 +1,5 @@
-const Node = require('./Node.js')
-const LinkedList = require('./LinkedList.js')
+const Node = require('./data_structures/Node.js')
+const LinkedList = require('./data_structures/LinkedList.js')
 
 
 // Example of Nodes
