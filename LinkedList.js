@@ -48,4 +48,18 @@ class LinkedList {
 
 }
 
+const seasons = new LinkedList();
+seasons.printList(); // prints empty list: <head> <tail>
+
+seasons.addToHead('summer');
+seasons.addToHead('spring');
+seasons.printList(); // prints: <head> spring summer <tail>
+
+seasons.addToTail('fall');
+seasons.addToTail('winter');
+seasons.printList(); // prints: <head> spring summer fall winter <tail>
+
+seasons.removeHead();
+seasons.printList(); // prints with spring removed: <head> summer fall winter <tail>
+
 module.exports = LinkedList;
