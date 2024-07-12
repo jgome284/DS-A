@@ -1,4 +1,4 @@
-const Node = require('./Node');
+const { DoublyNode } = require('./Node');
 
 class DoublyLinkedList {
   constructor() {
@@ -7,7 +7,7 @@ class DoublyLinkedList {
   }
 
   addToHead(data) {
-    const newHead = new Node(data);
+    const newHead = new DoublyNode(data);
     const currentHead = this.head;
     if (currentHead) {
       currentHead.setPreviousNode(newHead);
@@ -20,7 +20,7 @@ class DoublyLinkedList {
   }
 
   addToTail(data) {
-    const newTail = new Node(data);
+    const newTail = new DoublyNode(data);
     const currentTail = this.tail;
     if (currentTail) {
       currentTail.setNextNode(newTail);
