@@ -1,4 +1,4 @@
-const Node = require('./Node');
+const { Node } = require('./Node');
 
 class LinkedList {
   constructor() {
@@ -45,7 +45,6 @@ class LinkedList {
     output += '<tail>';
     console.log(output);
   }
-
 }
 
 module.exports = LinkedList;

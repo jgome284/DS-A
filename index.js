@@ -1,4 +1,4 @@
-const Node = require('./data_structures/Node.js');
+const { Node } = require('./data_structures/Node.js');
 const LinkedList = require('./data_structures/LinkedList.js');
 const DoublyLinkedList = require('./data_structures/DoublyLinkedList.js');
 
