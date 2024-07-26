@@ -1,4 +1,4 @@
-const LinkedList = require('./LinkedList');
+const LinkedList = require('../linked_list/LinkedList');
 
 class Stack {
   constructor(maxSize = Infinity) {

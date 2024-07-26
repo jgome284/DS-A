@@ -1,4 +1,4 @@
-const { Node } = require('./Node');
+const { Node } = require('../node/Node');
 
 class LinkedList {
   constructor() {
