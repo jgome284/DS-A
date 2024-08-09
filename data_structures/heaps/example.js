@@ -1,3 +1,7 @@
+console.log(
+  'Heaps are useful because they’re efficient in maintaining their heap condition. Building a heap using elements that decrease in value would ensure that we continually violate the heap condition. How many swaps would that cause?'
+);
+
 // import MinHeap class
 const MinHeap = require('./MinHeap');
 
